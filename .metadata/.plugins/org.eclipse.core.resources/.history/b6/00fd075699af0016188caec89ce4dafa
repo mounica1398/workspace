@@ -1,0 +1,100 @@
+@startuml
+hide footbox
+
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #FF0000
+ParticipantBorderColor DeepSkyBlue
+ParticipantBackgroundColor DodgerBlue
+ParticipantFontName Impact
+ParticipantFontSize 19
+ParticipantFontColor #FF0000
+ActorBackgroundColor aqua
+ActorFontColor DeepSKYBlue
+ActorFontSize 19
+ActorFontName Aapex
+}
+System -> Driver : main()
+activate Driver
+
+Driver -> ScoreCard
+activate ScoreCard
+
+Driver -> Scanner : getTeam1()
+activate Scanner
+
+Scanner --> Driver
+deactivate Scanner
+
+Driver ->ScoreCard  : updateTeam1()
+
+Driver ->Scanner : getBatsMan()
+activate Scanner
+
+Scanner --> Driver
+deactivate Scanner
+
+Loop   1st innings(50 overs)
+Loop While(Wickets!=10)
+Loop 6 Balls an Over
+Loop Ball!=Wicket
+
+Driver -> ScoredCard : updateBatsMan()
+
+loop 50 times
+ loop 6 times
+ 
+    alt six or four 
+    Driver -> Scanner :getRunsScored()
+    
+    activate Scanner
+    Scanner --> Driver
+    
+    deactivate Scanner
+    Driver -> ScoreCard : updateScoreCard()
+    ScoreCard-->Driver
+    
+    Driver -> BatsMan  : updateRunsScored()
+    BatsMan-->Driver
+    
+    Driver -> Bowler : updateRunsGiven()
+    Bowler-->Driver 
+    
+    Driver -> Player : updatePlayer()
+    Player-->Driver
+    
+    Driver->Bowler : UpdateWicketsFall()
+    Bowler-->Driver
+    
+    Loop Ball=Wicket
+
+    Driver->Player : UpdatePlayer()
+    Driver->Bowler : UpdateWicketsFall()
+    Driver->ScoreCard : UpdateWickets()
+         end
+         
+       end
+       
+     end
+     
+    alt wicket
+    
+    Driver -> Blower : updateWicket()
+    
+    Driver -> BatsMan : changeBatsMan()
+    
+    end
+    
+    Driver --> System
+    deactivate Driver
+    
+    @enduml
+    
+     
+     
+     
+    

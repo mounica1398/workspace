@@ -1,0 +1,45 @@
+package ds;
+
+public class BST {
+	public Tnode root;
+	BST()
+	{
+		root = null;
+	}
+	public Tnode  insert(Tnode root, int v)
+	{
+		if(root == null)
+			root = new Tnode(v);
+		if( v < root.data)
+			root.left = insert(root.left,v);
+		else if(v > root.data)
+			root.right = insert(root.right,v);
+		return root;
+		
+	}
+	public void inorder(Tnode root)
+	{
+		if(root == null)
+			return;
+		inorder(root.left);
+		System.out.print(root.data + " ");
+		inorder(root.right);
+	}
+	public void preorder(Tnode root)
+	{
+		if(root == null)
+			return;
+		System.out.println(root.data + " ");
+		preorder(root.left);
+		preorder(root.right);
+	}
+	public void postorder(Tnode root)
+	{
+		if(root == null)
+			return ;
+		postorder(root.left);
+		postorder(root.right);
+		System.out.println(root.data + " ");
+	}
+	
+}

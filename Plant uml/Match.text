@@ -1,0 +1,82 @@
+@startuml
+hide footbox
+
+System -> Driver : main()
+activate Driver
+
+Driver -> Scanner  : getPlace()
+activate Scanner
+
+Scanner --> Driver
+deactivate Scanner
+
+Driver -> Scanner  : getDate()
+activate Scanner
+
+Scanner --> Driver
+deactivate Scanner
+
+Driver -> Match : Match(Place,Date)
+activate Match
+
+Driver->Scanner : GetToss()
+activate Scanner
+
+Scanner-->Driver
+deactivate Scanner
+
+Driver->Scanner : GetFirstBattingTeam()
+activate Scanner
+
+Scanner-->Driver
+deactivate Scanner
+
+
+Match --> Driver
+deactivate Match
+
+loop 2 times
+
+Driver -> Scanner : getTeamName()
+deactivate Scanner
+
+Scanner --> Driver
+deactivate Scanner
+
+Driver -> Scanner : Team(TeamNames)
+activate Team
+
+Team --> Driver
+deactivate Team
+
+loop 11 times
+
+Driver -> Scanner : getPlayerName()
+activate Player
+
+Scanner --> Driver
+deactivate Scanner
+
+Driver -> Scanner : getPlayerAge()
+activate Scanner
+
+Scanner -> Driver
+deactivate Scanner
+
+Driver -> Player : Player()
+activate Player
+
+Player --> Driver
+deactivate Player
+
+   end
+  
+  end
+  
+  Driver --> System
+  deactivate Driver
+  
+  @enduml
+
+
+

@@ -1,0 +1,37 @@
+package ds;
+import java.util.Scanner;
+public class Driver {
+	public static void main(String [] args)
+	{
+		Scanner s = new Scanner(System.in);
+		BST b = new BST();
+		char ch;
+		System.out.println("Binary Search Tree");
+		b.root = b.insert(b.root, 4);
+		b.root = b.insert(b.root, 2);
+		b.root = b.insert(b.root, 6);
+		b.root = b.insert(b.root, 1);
+		b.root = b.insert(b.root, 3);
+		b.root = b.insert(b.root, 5);
+		b.root = b.insert(b.root, 7);
+		b.inorder(b.root);
+		System.out.println();
+		System.out.println("Pre order Traversal");
+		b.preorder(b.root);
+		System.out.println();
+		System.out.println("Post order Traversal");
+		b.postorder(b.root);
+		System.out.println();
+		System.out.println("Search");
+		do
+		{
+			Tnode key = s.nextInt();
+			b.Search(b.root,key);
+			System.out.println("do you want to continue?");
+			ch = s.next().charAt(0);
+		}while(ch == 'y');
+		
+		
+	}
+
+}

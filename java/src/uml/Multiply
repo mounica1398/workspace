@@ -1,0 +1,43 @@
+@startuml
+hide footbox
+
+System -> Driver :main
+activate Driver
+	Driver -> Fraction1 : Fraction(a,b)
+	activate Fraction1
+	Fraction1 --> Driver
+	deactivate Fraction1
+	 
+	Driver -> Fraction2 : Fraction(a,b)
+	activate Fraction2
+	Fraction2 --> Driver
+	deactivate Fraction2 
+	
+	Driver -> Fraction1 : multiply(Fraction2)
+	activate Fraction1
+		
+		Fraction1 -> Fraction2 : getNumerator()
+		activate Fraction2
+		Fraction2 --> Fraction1 
+		deactivate Fraction2
+		
+		Fraction1 -> Fraction2 : getDenominator()
+		activate Fraction2
+		Fraction2 --> Fraction1 
+		deactivate Fraction2
+		
+		Fraction1 -> Result : Fraction()
+		activate Result
+		Result --> Fraction1
+		deactivate Result
+	Fraction1 --> Driver
+	deactivate Fraction1
+	
+	Driver -> Result : print()
+	activate Result
+	Result --> Driver
+	deactivate Result
+	
+Driver --> System
+deactivate Driver	
+@enduml

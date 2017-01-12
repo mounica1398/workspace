@@ -1,0 +1,107 @@
+package ds;
+
+public class BST {
+	public Tnode root;
+	BST()
+	{
+		root = null;
+	}
+	public Tnode  insert(Tnode root, int v)
+	{
+		if(root == null)
+			root = new Tnode(v);
+		if( v < root.data)
+			root.left = insert(root.left,v);
+		else if(v > root.data)
+			root.right = insert(root.right,v);
+		return root;
+		
+	}
+	public void inorder(Tnode root)
+	{
+		if(root == null)
+			return;
+		inorder(root.left);
+		System.out.print(root.data + " ");
+		inorder(root.right);
+	}
+	public void preorder(Tnode root)
+	{
+		if(root == null)
+			return;
+		System.out.print(root.data + " ");
+		preorder(root.left);
+		preorder(root.right);
+	}
+	public void postorder(Tnode root)
+	{
+		if(root == null)
+			return ;
+		postorder(root.left);
+		postorder(root.right);
+		System.out.print(root.data + " ");
+	}
+	
+	public Tnode Search(Tnode root, int val)
+	{
+		if( root == null || root.data == val)
+			return root;
+		else if(val < root.data)
+			return Search(root.left,val);
+		else if(val > root.data)
+			return Search(root.right,val);
+		else 
+			return root;
+			
+	}
+	public Tnode Delete(Tnode root , int val)
+	/*{
+		if(root == null)
+			return root;
+		else if(val < root.data )
+			return Delete(root.left,val);
+		else if(val > root.data)
+			return Delete(root.right,val);
+		else
+		{
+			if(root.left == null)
+				return root.right;
+			else if(root.right == null)
+				return root.left;
+			else 
+				root.data = Succesor(root.right);
+				root.right = Delete(root.right,val);
+		}
+		return root;
+	}*/
+	public Tnode Deletion(Tnode root1, int val)
+	{
+		if(root1 == null)
+			return root1;
+		else if( val < root1.data)
+			root1.left = Deletion(root1.left,val);
+		else if( val > root1.data)
+			root1.right = Deletion(root1.right,val);
+		else
+		{
+			if(root1.left == null)
+				return root1.right;
+			else if(root1.right == null)
+				return root1.left;
+			root1.data = Succesor(root1.right);
+			root1.right = Deletion(root1.right,root1.data);
+		}  
+		return root1;
+	}
+	public int Succesor(Tnode root)
+	{
+		while(root.left != null)
+			root = root.left;
+		return root.data;
+	}
+		
+	
+	
+	
+	
+}

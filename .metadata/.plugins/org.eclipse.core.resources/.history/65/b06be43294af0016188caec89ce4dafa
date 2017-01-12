@@ -1,0 +1,107 @@
+@startuml
+ class Match1 {
+	
+	~ Date date
+	+ Team team1
+	+ Team team2
+	+ String ground
+	+ String scorecard sc
+	void GetPlace()
+	void GetDate()
+	void GetToss()
+	void getFirstBattingteam()
+}
+
+   Match1<|--team  
+
+class team{
+	arraylist players 
+	String teamName
+	String coach
+	player captain
+	
+	void GetTeamName()
+	void Team(TName)
+	
+}
+   team*--player
+   
+  
+   
+ class player{
+	 String name
+	 int age
+	 int Jnumber
+	 profile prof
+	 
+	 void GetPlayerNameAge()
+	 void UpdatePlayer()
+	 void UpdateBowler()
+ }
+   player<|--Batsman
+   player<|--Bowler
+ class Batsman{
+     String BatsmanName
+	 int runsScored
+	 boolean right
+	 float strikeRate
+	 int best
+	 
+	 void UpdateRuns()
+	 void UpdateBatsman()
+ }
+   
+ class Bowler{
+     String BowlerName
+	 boolean left
+	 float AvgSpeed
+	 int NoOfWickets
+	 float over
+	 
+	 void RunsGiven()
+	 Void WicketFall()
+ }
+ 
+ 
+   Bowler--over
+ 
+ class over{
+	 Ball ball[6]
+     Bowler
+ }
+ 
+  over--Ball
+ class Ball{
+   int RunsScored
+   boolean wicket
+   String Batsman
+   }
+ 
+ 
+   Batsman--ScoreCard
+   Bowler--ScoreCard
+ 
+  class ScoreCard{
+		 float overs
+		 String StrikeBatsman
+		 String nonStrikeBatsman
+		 int score
+		 int wickets
+		 Bowling bowler
+		 float currRate
+		 float ReqRate
+		 
+		 void UpdateScorecard()
+		 void Runrate()
+		 void GetReqRunrate()
+		 void GetsRunsToWinInBalls()
+		 void GetWinnerTeam()
+		 void UpdateWickets()
+		 
+	 }
+ 
+   
+   
+ 
+ 
+@enduml

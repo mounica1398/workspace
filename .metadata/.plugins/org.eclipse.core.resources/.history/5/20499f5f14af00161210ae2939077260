@@ -1,0 +1,10 @@
+package ds;
+
+public class BST {
+	public Tnode root;
+	BST()
+	{
+		root = null;
+	}
+
+}

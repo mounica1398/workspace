@@ -1,0 +1,65 @@
+@startuml
+hide footbox
+
+System -> Driver : main()
+activate Driver
+
+Driver -> ScoreCard
+activate ScoreCard
+
+Driver -> Scanner : getTeam1()
+activate Scanner
+
+Scanner --> Driver
+deactivate Scanner
+
+Driver ->ScoreCard  : updateTeam1()
+Driver ->Scanner : getBatsMan()
+
+activate Scanner
+Scanner --> Driver
+
+deactivate Scanner
+Driver -> ScoredCard : updateBatsMan()
+
+loop 50 times
+ loop 6 times
+ 
+    alt six or four 
+    Driver -> Scanner :getRunsScored()
+    
+    activate Scanner
+    Scanner --> Driver
+    
+    deactivate Scanner
+    Driver -> ScoreCard : updateScoreCard()
+    
+    Driver -> BatsMan  : updateRunsScored()
+    
+    Driver -> Bowler : updateRunsGiven()
+    
+    Driver -> Player : updatePlayer()
+    
+         end
+         
+       end
+       
+     end
+     
+    alt wicket
+    
+    Driver -> Blower : updateWicket()
+    
+    Driver -> BatsMan : changeBatsMan()
+    
+    end
+    
+    Driver --> System
+    deactivate Driver
+    
+    @enduml
+    
+     
+     
+     
+    

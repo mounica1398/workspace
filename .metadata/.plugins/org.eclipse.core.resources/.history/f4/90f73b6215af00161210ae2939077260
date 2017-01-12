@@ -1,0 +1,20 @@
+package ds;
+import java.util.Scanner;
+public class Driver {
+	public static void main(String [] args)
+	{
+		Scanner s = new Scanner(System.in);
+		BST b = new BST();
+		char ch;
+		do
+		{
+			b.root = b.insert(b.root, s.nextInt());
+			System.out.println("do you want to continue ? y / n ");
+			ch = s.next().charAt(0);
+		}while(ch == 'y');
+		
+		
+		
+	}
+
+}

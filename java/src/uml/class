@@ -1,0 +1,135 @@
+@startuml
+
+class Match{
+
+String ground
+
+Date date
+
+Team team1
+
+Team team2
+
+}
+
+class Team{
+
+Player play[i]
+
+String teamName
+
+String Coach
+
+Player Captain
+
+}
+
+class Player{
+
+String pName
+
+int age
+
+Profile prof
+
+int jersNum
+
+}
+
+class Over{
+
+Ball ball[6]
+
+Bowler bowler
+
+}
+
+class Scoreboard{
+
+Innings inn1
+
+Innings inn2
+
+Batsman bat1
+
+Batsman bat2
+
+Bowler bowl
+
+int runsTeam1
+
+int runsTeam2
+
+int wicketsTeam1
+
+int wicketsTeam2
+
+}
+
+class Batsman{
+
+int runsScored
+
+float strikeRate
+
+}
+
+class bowlingType{
+
+boolean Fast
+
+boolean Spinner
+
+boolean MedFast
+
+}
+
+class Bowler{
+
+bowlingType bType
+
+int wickets
+
+float overs
+
+int runsGiven
+
+}
+
+class Ball{
+
+Batsman b
+
+int runsScored
+
+boolean wicket
+
+}
+
+class NoBall{
+
+}
+
+Match *-- Team
+
+Team *-- Player
+
+Over *-- Ball
+
+Player <|-- Batsman
+
+Player <|-- Bowler
+
+Ball <|-- NoBall
+
+Bowler <-- bowlingType
+
+Over -- Bowler
+
+Scoreboard -- Bowler
+
+Over -- Batsman
+
+Scoreboard -- Batsman
+
+@enduml

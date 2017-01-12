@@ -1,0 +1,141 @@
+@startuml
+
+hide footbox
+
+System -> Driver : main
+
+activate Driver
+
+Driver -> Scanner : getPlace()
+
+activate Scanner
+
+Scanner --> Driver
+
+deactivate Scanner
+
+Driver -> Scanner : getDate()
+
+activate Scanner
+
+Scanner --> Driver
+
+deactivate Scanner
+
+Driver -> Match : Match(Place,Date)
+
+activate Match
+
+LOOP 2 TIMES
+
+Driver -> Scanner : getTeamName()
+
+activate Scanner
+
+Scanner --> Driver
+
+deactivate Scanner
+
+Driver -> Team : Team()
+
+activate Team
+
+LOOP 11 TIMES
+
+Driver -> Scanner : getPlayerName()
+
+activate Scanner
+
+Scanner --> Driver
+
+deactivate Scanner
+
+Driver -> Scanner : getPlayerAge()
+
+activate Scanner
+
+Scanner --> Driver
+
+deactivate Scanner
+
+Driver -> Player : Player()
+
+end
+
+end
+
+LOOP 2 TIMES
+
+LOOP 50 TIMES
+
+LOOP 6 TIMES
+
+Driver -> Scoreboard : updateScoreboard()
+
+activate Scoreboard
+
+Scoreboard --> Driver
+
+Driver -> Bowler : wicketsTaken()
+
+activate Bowler
+
+Bowler --> Driver
+
+Driver -> Bowler : runsGiven()
+
+Bowler --> Driver
+
+Driver -> Bowler : ballsBowled()
+
+Bowler --> Driver
+
+Driver -> Batsman : runsScoredBatsman1()
+
+activate Batsman
+
+Batsman --> Driver
+
+Driver -> Batsman : runsScoredBatsman2()
+
+Batsman --> Driver
+
+end
+
+end
+
+end
+
+Driver -> Scoreboard : getRuns()
+
+Scoreboard --> Driver
+
+Driver -> Batsman : getCurrentBatsman1()
+
+Batsman --> Driver
+
+Driver -> Batsman : getCurrentBatsman2()
+
+Batsman --> Driver
+
+Driver -> Bowler : getCurrentBowler()
+
+Bowler --> Driver
+
+deactivate Batsman
+
+deactivate Bowler
+
+deactivate Scoreboard
+
+deactivate Team
+
+deactivate Match
+
+Driver --> System
+
+deactivate Driver
+
+
+
+@enduml

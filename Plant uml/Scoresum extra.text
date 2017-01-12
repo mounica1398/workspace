@@ -1,0 +1,70 @@
+@startuml
+hide footbox
+
+System -> Match : Balls : Overs :Score
+activate Match
+
+Match -> Ball1 : Over(1/6) : Score1
+activate Match
+Ball1 --> Match
+deactivate Ball1
+
+Match -> Ball2 : Over(2/6) : Score2
+activate Match
+Ball2 --> Match
+deactivate Ball2
+  
+  loop 2 times
+  
+Match -> Ball1 : getScore()
+activate Ball1
+Ball1 --> Match
+deactivate Ball1
+
+Match -> Ball2 : getScore()
+activate Ball
+Ball2 --> Match
+deactivate Ball2
+
+alt Scores are different
+MATCH -> Ball : commonBse(Ball1,Ball2)
+
+ Ball -> Ball1 : convert()
+ activate Ball1
+ Ball1 --> Ball
+ deactivate Ball1
+ 
+ Ball -> Ball2 : convert()
+ activate Ball2
+ Ball2 --> Ball
+ deactivate Ball2
+ 
+ Ball --> Match
+ deactivate Ball
+ 
+ end
+  
+  Match -> Ball1 : add(Ball2)
+  activate Ball1
+
+   Ball1 -> Ball2 : getScore()
+   activate Ball2
+   Ball2 --> Ball1
+   deactivate Ball2
+   
+   Ball1 -> ScoreSum : Balls()
+   activate Scoresum
+   Scoresum --> Balls
+   deactivate ScoreSum
+   
+   Ball1 --> Match
+   deactivate Ball1
+   
+   Match -> ScoreSum : print()
+   activate Scoresum
+   Scoresum --> Match
+   deactivate Scoresum
+   
+   Match --> System
+   deactivate Match
+   @enduml
